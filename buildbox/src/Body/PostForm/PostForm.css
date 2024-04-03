@@ -230,3 +230,34 @@ img.btn-inative {
     border: 1px solid rgba(75, 75, 75, 0.5);
     background-color: rgba(75, 75, 75, 0);
 }
+
+@media (max-width: 768px) {
+    
+    .imagePostFormUploaded {
+        display: flex;
+        align-items: center; /* Centraliza verticalmente */
+        cursor: pointer;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .trashContainer {
+        display: flex;
+        align-items: center; /* Centraliza verticalmente */
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+    
+    .trash {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .fileInputLabel{
+        margin: 0px;
+    }
+    
+        
+
+}

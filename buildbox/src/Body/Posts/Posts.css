@@ -1,6 +1,6 @@
 .Body {
     background-color: #343434;
-    
+
 }
 
 .BodyContent {
@@ -10,9 +10,6 @@
 
 .FeedTitle {
 
-    margin: 56px 911px 8px 425px;
-    
-    /* margin-left:auto; */
     font-family: Roboto;
     font-size: 14px;
     font-weight: 500;
@@ -22,5 +19,175 @@
     letter-spacing: normal;
     text-align: left;
     color: #7a7a7a;
-  }
+}
+
+.PostCardFeed {
+    width: 516px;
+    height: 225px;
+    /* margin: 8px 425px 16px; */
+    padding: 12px 12px 32px 24px;
+    border-radius: 3px;
+    border: solid 1px #3b3b3b;
+    background-color: #313131;
+    display: flex;
+    position: relative;
+    margin-bottom: 16px
+}
+
+.FeedBody {
+    text-align: left;
   
+}
+
+.imageFeed {
+    width: 88px;
+    height: 88px;
+    margin: 24px 0px 16px 0;
+    object-fit: contain;
+    border-radius: 36px;
+}
+
+.FeedMessageText {
+    width: 348px;
+    height: 80px;
+    margin: 24px 12px 24px 32px;
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 1.25;
+    text-align: left;
+    color: #9f9f9f;
+}
+
+.EnviadoPorFeed {
+    margin-bottom: 0px;
+    font-family: Roboto;
+    font-size: 12px;
+    margin-left: 24px;
+    line-height: 1.33;
+    letter-spacing: 0.29px;
+    text-align: left;
+    color: #5f5f5f;
+}
+
+.AutorPostFeed {
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-left: 24px;
+    font-size: 14px;
+    line-height: 1.29;
+    text-align: left;
+    color: #7a7a7a;
+}
+
+.imageFeedDelete {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    margin: 5px;
+    top: 0;
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    .Body {
+        background-color: #343434;
+        padding: 20px;
+    }
+    
+    .BodyContent {
+        background-color: #343434;
+    }
+    
+    .FeedTitle {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+        color: #7a7a7a;
+    }
+    .FeedBody{
+        width: 100%;
+    }
+    
+    .PostCardFeed {
+        width: 100%; /* Largura total */
+        max-width: 390px; /* Largura máxima para telas menores */
+        height: auto;
+        padding: 12px;
+        border-radius: 3px;
+        border: solid 1px #3b3b3b;
+        background-color: #313131;
+        display: flex;
+        position: relative;
+        margin-bottom: 16px;
+        flex-wrap: wrap; /* Permite que os itens se envolvam para telas menores */
+        /* width: 350px; */
+        background-color: rgba(255, 0, 0, 0.014);
+    }
+    
+    .imageFeed {
+        width: 30;
+        height: 30;
+        border-radius: 50%;
+        background-color: red;
+    }
+    
+    .FeedMessageText {
+        flex: 1;
+        font-family: Roboto;
+        font-size: 16px;
+        line-height: 1.5;
+        width: 100%; 
+        background-color: blue;
+        max-height: 150px;
+        overflow-y: auto;
+        max-width: 70%;
+    }
+    .FeedMessageText {
+        flex: 1;
+        font-family: Roboto;
+        font-size: 16px;
+        line-height: 1.5;
+        width: 100%; 
+        background-color: blue;
+        max-height: 150px; /* Define a altura máxima desejada */
+        overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando a mensagem exceder a altura máxima */
+        max-width: 70%; /* Define a largura máxima para evitar que o texto ocupe toda a largura do contêiner */
+        margin-left: 12px; /* Adiciona margem à esquerda para separar o texto da imagem */
+        margin-top: 8px; /* Adiciona margem superior para separar a mensagem do autor */
+    }
+    
+    .EnviadoPorFeed, .AutorPostFeed {
+        font-family: Roboto;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #7a7a7a;
+        width: 100%;
+    }
+    
+    .EnviadoPorFeed {
+        margin-top: 8px;
+    }
+
+    .FeedMessageBox{
+        background-color: blueviolet;
+        max-width: 70%;
+    }
+    .FeedMessageBox {
+        /* max-height: 150px;
+        overflow-y: auto; Adiciona uma barra de rolagem vertical quando a mensagem exceder a altura máxima */
+      }
+      
+    
+    .AutorPostFeed {
+    }
+    
+    .imageFeedDelete {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+    }
+
+    
+}
