@@ -1,4 +1,3 @@
-// PostForm.tsx
 import React, { useState, ChangeEvent, useRef } from 'react';
 import image from '../../assets/image.png';
 import image2x from '../../assets/image@2x.png';
@@ -6,6 +5,7 @@ import image3x from '../../assets/image@3x.png';
 import trash from '../../assets/trash.png';
 import trash2x from '../../assets/trash@2x.png';
 import trash3x from '../../assets/trash@3x.png';
+import defaultImg from '../../assets/default-user-icon.jpg';
 import './PostForm.css';
 import { Form, Button } from 'react-bootstrap';
 
@@ -31,6 +31,8 @@ function PostForm({ onAddPost }: PostFormProps) {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [formData, setFormData] = useState<FormData>({ name: '', message: '', image: null });
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const defaultImage = defaultImg; // Defina a imagem padrão aqui
 
     const handleDescartarClick = () => {
         setSelectedImage(null);
@@ -72,8 +74,15 @@ function PostForm({ onAddPost }: PostFormProps) {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        
+        // Verifica se o campo de nome ou mensagem está vazio
+        if (!formData.name.trim() || !formData.message.trim()) {
+            alert('Por favor, preencha todos os campos.');
+            return; // Impede o envio do formulário se algum campo estiver em branco
+        }
+    
         const newPost: Post = {
-            image: formData.image || '',
+            image: formData.image || defaultImage,
             image2x: '', // Defina corretamente se necessário
             image3x: '', // Defina corretamente se necessário
             message: formData.message,
@@ -81,7 +90,10 @@ function PostForm({ onAddPost }: PostFormProps) {
         };
         onAddPost(newPost);
         console.log('Dados a serem enviados:', newPost);
+        setFormData({ name: '', message: '', image: null }); // Limpa os campos do formulário
+        setSelectedImage(null); // Limpa a imagem selecionada
     };
+    
 
     return (
         <div className="Body">
@@ -97,13 +109,13 @@ function PostForm({ onAddPost }: PostFormProps) {
                             </>
                         ) : (
                             <label htmlFor="fileInput" className="fileInputLabel">
-                                <img src={image} srcSet={`${image2x} 2x, ${image3x} 3x`} alt="Upload de arquivo" className="fileInputImage" onClick={handleImageClick} />
+                                <img src={defaultImage} srcSet={`${image2x} 2x, ${image3x} 3x`} alt="Upload de arquivo" className="fileInputImage" onClick={handleImageClick} />
                                 <input type="file" id="fileInput" className="fileInput" onChange={handleFileChange} ref={fileInputRef} />
                             </label>
                         )}
                     </div>
                     <Form.Group controlId="formLogo" className="formGroup">
-                        <Form.Control type="text" placeholder="Digite seu nome" className="labelStyle mb-3" name="name" value={formData.name} onChange={handleChange} />
+                        <Form.Control type="text" placeholder="Digite seu nome" className="labelStyle mb-3" name="name" value={formData.name} onChange={handleChange} maxLength={25}/>
                         <Form.Control as="textarea" rows={3} placeholder="Mensagem" className="labelStyle" style={{ resize: 'none' }} name="message" value={formData.message} onChange={handleChange} />
                     </Form.Group>
                     <Form.Group controlId="formLogo" className="formGroupButtons">

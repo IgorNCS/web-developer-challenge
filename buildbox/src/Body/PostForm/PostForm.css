@@ -31,23 +31,6 @@
     background-color: #313131;
 }
 
-.Retngulo-10 {
-    width: 468px;
-    height: 40px;
-    margin: 16px 0 8px;
-    padding: 12px 351px 11px 16px;
-    border-radius: 8px;
-    background-color: #494949;
-}
-
-.Retngulo-11 {
-    width: 468px;
-    height: 80px;
-    margin: 8px 0 32px;
-    padding: 12px 382px 51px 16px;
-    border-radius: 8px;
-    background-color: #494949;
-}
 
 .Descartar {
     width: 60px;
@@ -248,7 +231,9 @@ img.btn-inative {
         background: none;
         border: none;
     }
-    
+    .selectedImage{
+        margin: 0px;
+    }
     .trash {
         width: 24px;
         height: 24px;

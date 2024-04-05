@@ -1,8 +1,6 @@
-// Posts.tsx
 import React from 'react';
 import deleteImage from '../../assets/delete.png';
 import './Posts.css';
-import { Form, Button } from 'react-bootstrap';
 
 interface Post {
     image: string;
@@ -10,11 +8,16 @@ interface Post {
     image3x: string;
     message: string;
     author: string;
+    onDelete: () => void;
 }
 
 function Posts({ posts }: { posts: Post[] }) {
+    const handleDeleteClick = (index: number) => {
+        posts[index].onDelete();
+    };
+
     return (
-        <div className="Body">
+        <div className="BodyPosts">
             <div className="FeedBody">
                 <span className="FeedTitle Text-Style-3 mb-3">Feed</span>
                 {posts.map((post, index) => (
@@ -23,10 +26,10 @@ function Posts({ posts }: { posts: Post[] }) {
                             src={deleteImage}
                             alt="Delete arquivo"
                             className="imageFeedDelete"
+                            onClick={() => handleDeleteClick(index)}
                         />
                         <img
                             src={post.image}
-                            srcSet={`${post.image2x} 2x, ${post.image3x} 3x`}
                             alt="Upload de arquivo"
                             className="imageFeed"
                         />

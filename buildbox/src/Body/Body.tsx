@@ -1,4 +1,3 @@
-// Body.tsx
 import React, { useState } from 'react';
 import logo from '../assets/bx-logo.png';
 import './Body.css';
@@ -20,11 +19,22 @@ function Body() {
         setPosts([...posts, newPost]);
     };
 
+    const handleDeletePost = (index: number) => {
+        const updatedPosts = [...posts];
+        updatedPosts.splice(index, 1);
+        setPosts(updatedPosts);
+    };
+
+    const postsWithDeleteCallback = posts.map((post, index) => ({
+        ...post,
+        onDelete: () => handleDeletePost(index),
+    }));
+
     return (
         <div className="Body">
             <div className="BodyContent">
                 <PostForm onAddPost={handleAddPost} />
-                <Posts posts={posts} />
+                <Posts posts={postsWithDeleteCallback} />
             </div>
         </div>
     );
